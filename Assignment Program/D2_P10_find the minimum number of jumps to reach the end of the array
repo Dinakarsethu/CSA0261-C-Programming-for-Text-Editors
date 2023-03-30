@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int minJumps(int arr[], int n)
+{
+    int *jumps = (int*)malloc(sizeof(int) * n); // array to store minimum jumps required to reach each index
+    int i, j;
+
+    if (n == 0 || arr[0] == 0) { // if there are no elements or the first element is 0, it's impossible to reach the end
+        return -1;
+    }
+
+    jumps[0] = 0; // minimum jumps required to reach the first index is 0
+
+    // find the minimum number of jumps required to reach each index
+    for (i = 1; i < n; i++) {
+        jumps[i] = INT_MAX; // initialize the minimum jumps required to reach the current index to a very large value
+
+        // try all possible jumps from the previous indexes to reach the current index
+        for (j = 0; j < i; j++) {
+            if (i <= j + arr[j] && jumps[j] != INT_MAX) { // if the current index is reachable from the previous index, and the minimum jumps required to reach the previous index has been calculated
+                jumps[i] = jumps[j] + 1; // update the minimum jumps required to reach the current index
+                break; // no need to check further possible jumps from previous indexes
+            }
+        }
+    }
+
+    if (jumps[n - 1] == INT_MAX) { // if it's impossible to reach the end of the array
+        return -1;
+    } else {
+        return jumps[n - 1]; // return the minimum number of jumps required to reach the end of the array
+    }
+}
+
+int main()
+{
+    int arr[] = {3, 4, 2, 1, 2, 1};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int min_jumps = minJumps(arr, n);
+
+    printf("Minimum number of jumps to reach the end of the array starting from index 0: %d", min_jumps);
+
+    return 0;
+}
