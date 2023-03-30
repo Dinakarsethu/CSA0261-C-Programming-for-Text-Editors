@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int main() {
+    int arr[100];
+    int i, n, max_diff, min_val;
+
+    printf("Enter the size of the array: ");
+    scanf("%d", &n);
+
+    printf("Enter the elements of the array: \n");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // initialize max_diff to the difference between the first two elements of the array
+    if (arr[0] > arr[1]) {
+        max_diff = arr[0] - arr[1];
+        min_val = arr[1];
+    } else {
+        max_diff = arr[1] - arr[0];
+        min_val = arr[0];
+    }
+
+    // find the maximum difference between any two elements in the array
+    for (i = 2; i < n; i++) {
+        if (arr[i] - min_val > max_diff) {
+            max_diff = arr[i] - min_val;
+        }
+
+        if (arr[i] < min_val) {
+            min_val = arr[i];
+        }
+    }
+
+    printf("The maximum difference between any two elements in the array is %d\n", max_diff);
+
+    return 0;
+}
