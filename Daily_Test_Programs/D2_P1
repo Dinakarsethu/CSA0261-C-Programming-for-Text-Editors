@@ -1,0 +1,20 @@
+#include <stdio.h>
+void main()
+{
+    int i,j;
+    int array[30],a[30],d[30];
+    for(i=0;i<30;i++)
+    {
+        array[i]=i;
+    }
+    printf("\nBefore Descending order ");
+    for(i=0;i<30;i=i+2)
+    {
+        printf("%d \n",array[i]);
+    }
+    printf("\nDescending order ");
+    for(j=0;j<30;j++)
+    {
+        printf("%d \n",array[j]);
+    }
+}
