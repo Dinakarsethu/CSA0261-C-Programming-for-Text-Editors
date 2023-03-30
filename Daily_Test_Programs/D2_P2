@@ -1,0 +1,28 @@
+#include<stdio.h>
+#include<string.h>
+#define Max=100;
+void main()
+{
+    int i,j,k;
+    char a[Max],b[Max],c[Max];
+    printf("Enter the string 1: ");
+    scanf("%c", &a);
+
+    printf("\nEnter the string 2: ");
+    scanf("%c", &b);
+    
+    for(i=0;i<Max;i++)
+    {
+        for(j=1;j<Max;j++)
+        {
+            for(k=0;k<Max;k++)
+            {
+                if(a[i]==b[j])
+            {
+                c[k] = (a[i])&&(b[j]);
+            }
+            }
+        }
+    }
+    printf("%c", &c);
+}
