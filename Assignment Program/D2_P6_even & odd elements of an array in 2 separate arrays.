@@ -1,0 +1,44 @@
+#include <stdio.h>
+
+#define MAX_SIZE 100
+
+int main()
+{
+    int arr[MAX_SIZE], even[MAX_SIZE], odd[MAX_SIZE];
+    int i, evenCount = 0, oddCount = 0, size;
+
+    // Get the size of the array
+    printf("Enter size of the array: ");
+    scanf("%d", &size);
+
+    // Get elements of the array
+    printf("Enter elements of array:\n");
+    for (i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Separate even and odd elements
+    for (i = 0; i < size; i++) {
+        if (arr[i] % 2 == 0) {
+            even[evenCount] = arr[i];
+            evenCount++;
+        } else {
+            odd[oddCount] = arr[i];
+            oddCount++;
+        }
+    }
+
+    // Print even elements
+    printf("\nEven elements:\n");
+    for (i = 0; i < evenCount; i++) {
+        printf("%d ", even[i]);
+    }
+
+    // Print odd elements
+    printf("\nOdd elements:\n");
+    for (i = 0; i < oddCount; i++) {
+        printf("%d ", odd[i]);
+    }
+
+    return 0;
+}
